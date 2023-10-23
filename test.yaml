@@ -1,0 +1,10 @@
+- name: Retry Task Until Condition
+  hosts: localhost
+  tasks:
+    - name: Run Task Until Condition
+      debug:
+        msg: "Current date and time is {{ ansible_date_time.iso8601 }}"
+      register: result
+      until: result == "desired_condition"
+      retries: 44640
+      delay: 60
